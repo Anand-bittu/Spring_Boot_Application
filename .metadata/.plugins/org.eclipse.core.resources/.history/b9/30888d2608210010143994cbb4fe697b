@@ -1,0 +1,27 @@
+package com.anand.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.anand.entity.CustomerJPA;
+import com.anand.service.CustomerJPAService;
+
+@RestController
+public class CustomerRestController {
+
+	@Autowired
+	private CustomerJPAService service;
+	
+	@PostMapping("/register")
+	public ResponseEntity<String> addCustomer(CustomerJPA c){
+	boolean status=	service.saveUser(c);
+	if(status) {
+		return new ResponseEntity<String>("Customer is Added",HttpStatus.CREATED);
+	}else {
+		return new ResponseEntity<String>("Customer is Not Created",HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	}
+}

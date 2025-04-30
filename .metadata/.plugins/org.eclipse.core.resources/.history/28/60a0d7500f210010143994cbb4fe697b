@@ -1,0 +1,41 @@
+package com.anand.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import com.anand.entity.CustomerJPA;
+import com.anand.repo.CustomerJPARepo;
+
+@Service
+public class CustomerJPAService implements UserDetailsService{
+
+	@Autowired
+	public BCryptPasswordEncoder passwordEncoder;
+	
+	@Autowired
+	public CustomerJPARepo custRepo;
+	
+	public boolean saveUser(CustomerJPA c) {
+		//encode the Password First
+	String endcodePassword=	passwordEncoder.encode(c.getPassword());
+	// set the Encoded Password 
+		c.setPassword(endcodePassword);
+		//save the  entity Object with encode password
+	CustomerJPA entity=	custRepo.save(c);
+	return entity.getCid()!=null;
+	}
+
+	//to load the Record Based on Email ID
+	@Override
+	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+	
+}

@@ -1,0 +1,23 @@
+package com.anand.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.anand.repo.AddressRepo;
+import com.anand.response.AddressResponse;
+
+@Service
+public class AddressService {
+
+	@Autowired
+	private AddressRepo repo;
+	
+	public AddressResponse getAddressByEmpId(Integer emp_id) {
+		
+	}
+	
+	
+	
+	
+	
+}

@@ -1,0 +1,9 @@
+package com.anand.entity;
+
+public class Employee {
+
+	private Integer eid;
+	private String ename;
+	private Double salary;
+	
+}

@@ -1,0 +1,22 @@
+package com.anand.cfg;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestTemplate;
+
+@Configuration
+public class EmployeeCfg {
+
+	@Bean
+	public ModelMapper modelMapper() {
+		//creating the model MapperObject manually
+		return new ModelMapper();
+	}
+	
+	public RestTemplate template() {
+		return new RestTemplate();
+	}
+	
+	
+}

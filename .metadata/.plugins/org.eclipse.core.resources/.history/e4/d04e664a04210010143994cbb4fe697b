@@ -1,0 +1,17 @@
+package com.anand.controller;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.anand.entity.CustomerJPA;
+
+@RestController
+public class CustomerRestController {
+
+	@PostMapping("/register")
+	public ResponseEntity<String> addCustomer(CustomerJPA c){
+		return null;
+	}
+	
+}

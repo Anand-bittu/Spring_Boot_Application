@@ -1,0 +1,22 @@
+package com.anand.service;
+
+import org.springframework.stereotype.Service;
+
+import com.anand.entity.Employee;
+import com.anand.repo.EmployeeRepo;
+
+@Service
+public class EmployeeService {
+
+	private EmployeeRepo repo;
+	
+	
+	public Employee getEmployeeBYId(Integer id) {
+		
+		
+		return null;
+	}
+	
+	
+	
+}

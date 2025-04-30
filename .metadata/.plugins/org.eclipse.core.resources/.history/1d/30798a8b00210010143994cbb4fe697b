@@ -1,0 +1,12 @@
+package com.anand.entity;
+
+public class CustomerJPA {
+
+	private Integer cid;
+	private String name;
+	private String email;
+	private String password;
+	private long phone;
+	
+	
+}

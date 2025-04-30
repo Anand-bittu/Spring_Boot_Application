@@ -1,0 +1,22 @@
+package com.anand.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.anand.response.AddressResponse;
+import com.anand.service.AddressService;
+
+@RestController
+public class AddressContoller {
+
+	@Autowired
+	private AddressService service;
+	
+	public ResponseEntity<AddressResponse> getAddress(){
+		return  null;
+	}
+	
+	
+	
+}

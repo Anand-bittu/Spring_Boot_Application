@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: 024_SpringBoot_MicroServices_AdminServer
+server:
+  port: 1111

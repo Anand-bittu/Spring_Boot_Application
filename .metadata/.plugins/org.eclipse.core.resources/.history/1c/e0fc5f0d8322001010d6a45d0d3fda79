@@ -1,0 +1,27 @@
+package com.anand.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.anand.response.AddressResponse;
+import com.anand.service.AddressService;
+
+@RestController
+public class AddressContoller {
+
+	@Autowired
+	private AddressService service;
+	
+	@GetMapping(value = "/address/{emp_id}"
+			,produces = "application/json")
+	public ResponseEntity<AddressResponse> getAddress(
+			@PathVariable Integer emp_id){
+		return  null;
+	}
+	
+	
+	
+}

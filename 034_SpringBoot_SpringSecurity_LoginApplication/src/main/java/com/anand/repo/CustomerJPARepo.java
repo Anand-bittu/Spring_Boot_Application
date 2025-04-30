@@ -1,0 +1,13 @@
+package com.anand.repo;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.anand.entity.CustomerJPA;
+
+public interface CustomerJPARepo 
+extends JpaRepository<CustomerJPA,Integer> {
+
+	public CustomerJPA findByEmail(String email);
+	
+	
+}

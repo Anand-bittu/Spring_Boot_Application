@@ -1,0 +1,63 @@
+package com.anand.cfg;
+
+import java.security.AuthProvider;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
+
+import com.anand.service.CustomerJPAService;
+
+@Configuration
+@EnableWebSecurity
+public class CustomerSecutityCfg {
+
+	@Autowired
+	private CustomerJPAService service;
+	
+	//logic to encrypt the Password
+	@Bean
+	public BCryptPasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+	
+	//create AuthicateProvider
+	@Bean
+	public DaoAuthenticationProvider authProvider() {
+		DaoAuthenticationProvider authProvider=new
+				DaoAuthenticationProvider();
+		authProvider.setPasswordEncoder(passwordEncoder());
+		authProvider.setUserDetailsService(service);
+	     return authProvider;
+	}
+	
+	//create AuthicateManger 
+	@Bean
+	public AuthenticationManager authManger(AuthenticationConfiguration cfg)throws Exception {
+		return cfg.getAuthenticationManager();
+	}
+	
+	
+	// logic to send only some RestAPI Call 
+	@Bean
+	public SecurityFilterChain security(HttpSecurity http)throws Exception {
+	    http.authorizeHttpRequests((req)->{
+	      req.requestMatchers("/register","/login")
+	        .permitAll()
+	        .anyRequest()
+	        .authenticated();	
+	    });
+		return http.csrf().disable().build();
+	}
+	
+	
+	
+	
+}

@@ -1,0 +1,28 @@
+package com.anand.aut;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.web.SecurityFilterChain;
+
+@Configuration
+@EnableWebSecurity
+public class AppSecurityConfiguration {
+
+	@Bean
+	public SecurityFilterChain sercurityConfig(HttpSecurity http)throws Exception {
+		System.out.println("inside Security Message ");
+		http.authorizeHttpRequests((req)->
+		req.requestMatchers("/contact")
+		.permitAll()
+		.anyRequest()
+		.authenticated())
+		.httpBasic(Customizer.withDefaults())
+		.formLogin(Customizer.withDefaults());
+		return http.build();
+	}
+	
+	
+}

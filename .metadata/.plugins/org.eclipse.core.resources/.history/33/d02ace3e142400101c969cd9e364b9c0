@@ -1,0 +1,37 @@
+package com.anand.exception;
+
+import java.time.LocalDate;
+
+public class Excpo {
+
+	private String excode;
+	private String exmsg;
+	private LocalDate ldate;
+	public Excpo() {
+		// TODO Auto-generated constructor stub
+	}
+	public String getExcode() {
+		return excode;
+	}
+	public void setExcode(String excode) {
+		this.excode = excode;
+	}
+	public String getExmsg() {
+		return exmsg;
+	}
+	public void setExmsg(String exmsg) {
+		this.exmsg = exmsg;
+	}
+	public LocalDate getLdate() {
+		return ldate;
+	}
+	public void setLdate(LocalDate ldate) {
+		this.ldate = ldate;
+	}
+	@Override
+	public String toString() {
+		return "Excpo [excode=" + excode + ", exmsg=" + exmsg + ", ldate=" + ldate + "]";
+	}
+	
+	
+}

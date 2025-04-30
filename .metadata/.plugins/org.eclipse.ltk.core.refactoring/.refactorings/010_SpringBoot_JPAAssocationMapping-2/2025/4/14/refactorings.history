@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.anand.repo.Address&apos; to &apos;AddressRepo&apos;&#x0D;&#x0A;- Original project: &apos;010_SpringBoot_JPAAssocationMapping-2&apos;&#x0D;&#x0A;- Original element: &apos;com.anand.repo.Address&apos;&#x0D;&#x0A;- Renamed element: &apos;com.anand.repo.AddressRepo&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Address&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.anand.repo{Address.java[Address" matchStrategy="1" name="AddressRepo" qualified="false" references="true" similarDeclarations="false" stamp="1743488463959" textual="false" version="1.0"/>
+</session>

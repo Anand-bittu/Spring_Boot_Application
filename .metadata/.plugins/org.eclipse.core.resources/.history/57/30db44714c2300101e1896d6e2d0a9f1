@@ -1,0 +1,12 @@
+spring.application.name=035_SpringBoot_MicroService_Employee
+
+spring.datasource.url=jdbc:mysql://localhost:3306/springdb
+spring.datasource.username=root
+spring.datasource.password=root
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+
+adressservice.base.url=http://localhost:8080/
+
+
+server.port=9090

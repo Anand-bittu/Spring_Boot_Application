@@ -1,0 +1,50 @@
+package com.anand.service;
+
+import java.util.Optional;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+import com.anand.entity.Employee;
+import com.anand.repo.EmployeeRepo;
+import com.anand.response.AddressResponse;
+import com.anand.response.EmployeeResponse;
+
+@Service
+public class EmployeeService {
+    @Autowired
+	private EmployeeRepo repo;
+	
+    @Autowired
+    private ModelMapper modelMapper;
+   
+    private RestTemplate template;
+    
+	/*
+	 * @Value("${addressservice.base.url}") private String addresurl;
+	 */
+    
+    public EmployeeService(@Value("${addressservice.base.url}")String addresurl,
+    		RestTemplateBuilder builder) {
+	System.out.println("url::"+addresurl);
+    this.template=builder.rootUri(addresurl).build();
+    }
+    
+	
+	public EmployeeResponse getEmployeeBYId(Integer emp_id) {
+		System.out.println("inside Get EMployee");
+	Employee employee=repo.findById(emp_id).get();
+	 EmployeeResponse employeeResponse=modelMapper.map(employee,EmployeeResponse.class);
+	 AddressResponse addressResponse=template.getForObject("address/{emp_id}",AddressResponse.class, emp_id);
+	System.out.println("after RestCall -------------------------------");       
+	 employeeResponse.setResponse(addressResponse);
+	return employeeResponse;
+	}
+	
+	
+	
+}

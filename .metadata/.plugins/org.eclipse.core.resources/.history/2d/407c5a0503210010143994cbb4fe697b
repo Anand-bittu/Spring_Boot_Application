@@ -1,0 +1,17 @@
+package com.anand.service;
+
+import org.springframework.stereotype.Service;
+
+import com.anand.entity.CustomerJPA;
+
+@Service
+public class CustomerJPAService {
+
+	
+	public boolean saveUser(CustomerJPA c) {
+		return null;
+	}
+	
+	
+	
+}

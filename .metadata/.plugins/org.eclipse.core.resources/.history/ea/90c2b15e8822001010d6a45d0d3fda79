@@ -1,0 +1,16 @@
+package com.anand.cfg;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class EmployeeCfg {
+
+	@Bean
+	public ModelMapper modelMapper() {
+		//creating the model MapperObject manually
+		return new ModelMapper();
+	}
+	
+}

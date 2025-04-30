@@ -1,0 +1,30 @@
+package com.anand.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import com.anand.entity.CustomerJPA;
+import com.anand.repo.CustomerJPARepo;
+
+@Service
+public class CustomerJPAService {
+
+	@Autowired
+	public BCryptPasswordEncoder passwordEncoder;
+	
+	@Autowired
+	public CustomerJPARepo custRepo;
+	
+	public boolean saveUser(CustomerJPA c) {
+		//encode the Password First
+	String endcodePassword=	passwordEncoder.encode(c.getPassword());
+		c.setPassword(endcodePassword);
+	CustomerJPA entity=	custRepo.save(c);
+	
+	return entity.getCid()!=null;
+	}
+	
+	
+	
+}
